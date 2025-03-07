@@ -1,0 +1,832 @@
+
+<!DOCTYPE html><html
+	class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light"
+	lang="en-us"
+	dir="ltr"
+	data-authenticated="false"
+	data-auth-status-determined="false"
+	data-target="docs"
+	x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Install Hyper-V" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-hyper-v" /><meta property="og:description" content="Gives instructions for installing the Hyper-V role using Server Manager or Windows PowerShell. And gives instructions for enablings Hyper-V on Windows." /><meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png" />
+
+	<meta property="og:image:alt" content="Microsoft Learn" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<meta name="twitter:site" content="@MicrosoftLearn" />
+
+	<meta name="color-scheme" content="light dark"><meta name="author" content="meaghanlewis" />
+<meta name="breadcrumb_path" content="/windows-server/breadcrumbs/toc.json" />
+<meta name="depot_name" content="MSDN.WindowsServerDocs-pr" />
+<meta name="description" content="Gives instructions for installing the Hyper-V role using Server Manager or Windows PowerShell. And gives instructions for enablings Hyper-V on Windows." />
+<meta name="document_id" content="29c26eae-f46d-707a-f092-0c3d66b22912" />
+<meta name="document_version_independent_id" content="c4f0453e-2904-864f-fcfe-d7a2555f5732" />
+<meta name="feedback_help_link_type" content="" />
+<meta name="feedback_help_link_url" content="" />
+<meta name="feedback_product_url" content="" />
+<meta name="feedback_system" content="Standard" />
+<meta name="git_commit_id" content="015bc5fd649f73132f3be73b7d1ad99dbb4130da" />
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/windowsserverdocs-pr/blob/015bc5fd649f73132f3be73b7d1ad99dbb4130da/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md" />
+<meta name="locale" content="en-us" />
+<meta name="ms.assetid" content="8e871317-09d2-4314-a6ec-ced12b7aee89" />
+<meta name="ms.author" content="mosagie" />
+<meta name="ms.date" content="01/15/2025" />
+<meta name="ms.service" content="windows-server" />
+<meta name="ms.subservice" content="hyper-v" />
+<meta name="ms.topic" content="how-to" />
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/windowsserverdocs-pr/blob/live/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md" />
+<meta name="page_type" content="conceptual" />
+<meta name="pdf_url_template" content="https://learn.microsoft.com/pdfstore/en-us/MSDN.WindowsServerDocs-pr/{branchName}{pdfName}" />
+<meta name="recommendations" content="true" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc.json" />
+<meta name="uhfHeaderId" content="MSDocsHeader-WindowsServer" />
+<meta name="updated_at" content="2025-01-16 11:30 PM" />
+<meta name="word_count" content="860" />
+<meta name="zone_pivot_groups" content="windows" />
+<meta name="persistent_id" content="89af49e0-91a8-336c-1e21-5f898dbd18f3" />
+	<meta name="platform_id" content="89af49e0-91a8-336c-1e21-5f898dbd18f3" />
+	<meta name="github_feedback_content_git_url" content="https://github.com/MicrosoftDocs/windowsserverdocs/blob/main/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md" /><link href="https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-hyper-v" rel="canonical"><title>Install Hyper-V | Microsoft Learn</title><link rel="stylesheet" href="/static/assets/0.4.029836350/styles/site-ltr.css">
+
+	<script id="msdocs-script">
+	var msDocs = {environment: {
+			supportLevel: 'production',
+			accessLevel: 'online',
+			reviewFeatures: false,
+			systemContent: true,
+			azurePortalHostname: 'portal.azure.com',
+			legacyHosting: false,
+			siteName: 'learn',
+		},data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'ru-ru',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {},
+			hasBinaryRating: true,
+			feedbackHelpLinkType:'',
+			feedbackHelpLinkUrl:'',
+			standardFeedback: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'Standard',
+			feedbackGitHubRepo: '',
+			feedbackProductUrl: '',extendBreadcrumb: false,isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasPrintButton: true,
+			hasBookmark: true,
+			hasShare: true,
+			isPermissioned: false,
+			isPrivateUnauthorized: false,hasRecommendations: true,contributors: [{ name: "meaghanlewis", url: "https://github.com/meaghanlewis" }],},
+		functions:{}
+	};
+	</script><script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+	<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script><script src="/static/assets/0.4.029836350/global/deprecation.js"></script><script src="/static/assets/0.4.029836350/scripts/ru-ru/index-docs.js"></script></head>
+
+<body lang="ru-ru" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" style="z-index: 1070" class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center  has-body-background" tabindex="1">Пропустить и перейти к основному содержимому</a><div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;"
+			hidden
+		>
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">Этот браузер больше не поддерживается.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Выполните обновление до Microsoft Edge, чтобы воспользоваться новейшими функциями, обновлениями для системы безопасности и технической поддержкой.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+						style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">Скачать Microsoft Edge</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+						style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">Дополнительные сведения об Internet Explorer и Microsoft Edge</a>
+				</div>
+			</div>
+		</div>
+		<!-- liquid-tag banners global -->
+
+		<!-- site header -->
+		<header id="ms--site-header" data-test-id="site-header-wrapper" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+			<div id="ms--mobile-nav" class="site-header display-none-tablet padding-inline-none gap-none" data-bi-name="mobile-header" data-test-id="mobile-header"></div>
+			<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header"></div>
+			<div id="ms--secondary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L2-header" data-test-id="secondary-header"></div>
+		</header><div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+				<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+					<button type="button" class="contents-button button button-sm margin-right-xxs" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button>
+						<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+						<span class="contents-expand-title">Оглавление</span>
+					</button>
+					<button type="button" class="ap-collapse-behavior ap-expanded button button-sm" data-bi-name="ap-collapse" aria-controls="action-panel">
+						<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+						<span>Выйти из режима фокусировки</span>
+					</button>
+				</div>
+			</div><div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile "><div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="margin-top-sm-tablet position-sticky display-flex flex-direction-column" aria-label="Основной"></nav>
+			</div><!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps "><div id="main-column" class="column  is-full is-8-desktop" data-main-column>
+
+						<main id="main" class="" role="main" data-bi-name="content" lang="en-us" dir="ltr"><!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs display-none-print">
+								<div class="display-flex align-items-center "><details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs">
+										<summary class="button button-clear button-primary button-sm inner-focus" aria-label="Все элементы навигации">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none">
+
+										</div>
+									</details>
+
+									<bread-crumbs id="article-header-breadcrumbs" data-test-id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"></bread-crumbs><div id="article-header-page-actions"  class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"><a
+											id="lang-link-tablet"
+											class="button button-primary button-clear button-sm display-none display-inline-flex-tablet"
+											title="Прочитать на английском" data-bi-name="language-toggle"
+											data-read-in-link
+											hidden>
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon>
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text>Прочитать на английском</span>
+										</a><button
+												type="button"
+												class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet"
+												data-list-type="collection"
+												data-bi-name="collection"
+												title="Добавить в коллекцию">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Сохранить</span>
+											</button><a	data-contenteditbtn
+												class="button button-clear button-sm text-decoration-none button-primary display-none display-inline-flex-tablet"
+												aria-label="Изменить"
+												title="Редактировать этот документ"
+												data-bi-name="edit"
+														href="https://github.com/MicrosoftDocs/windowsserverdocs/blob/main/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md"
+														data-original_content_git_url="https://github.com/MicrosoftDocs/windowsserverdocs-pr/blob/live/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md"
+														data-original_content_git_url_template="{repo}/blob/{branch}/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md"
+														data-pr_repo=""
+														data-pr_branch="">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-edit-outline"></span>
+												</span>
+											</a>
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="Дополнительные действия" title="Дополнительные действия">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-xs"><button
+														data-page-action-item="overflow-mobile"
+														type="button"
+														class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet"
+														data-bi-name="contents-expand"
+														data-contents-button
+														data-popover-close>
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span><span class="contents-expand-title">Оглавление</span></button><a
+													id="lang-link-overflow"
+													class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet"
+													title="Прочитать на английском" data-bi-name="language-toggle"
+													data-page-action-item="overflow-mobile"
+													data-check-hidden="true"
+													data-read-in-link
+													hidden
+													>
+													<span class="icon" aria-hidden="true" data-read-in-link-icon>
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text>Прочитать на английском</span>
+												</a><button
+														type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="collection"
+														data-bi-name="collection"
+														title="Сохранить"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Сохранить</span>
+													</button>
+
+			 										
+													<button
+													 	type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="plan"
+														data-bi-name="plan"
+														title="Добавить в план"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close
+														hidden>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="plan-status">Добавить в план</span>
+													</button><a	data-contenteditbtn
+														class="button button-clear button-block button-sm has-inner-focus justify-content-flex-start text-decoration-none display-none-tablet"
+														aria-label="Изменить"
+														title="Редактировать этот документ"
+														data-bi-name="edit"
+																href="https://github.com/MicrosoftDocs/windowsserverdocs/blob/main/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md"
+																data-original_content_git_url="https://github.com/MicrosoftDocs/windowsserverdocs-pr/blob/live/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md"
+																data-original_content_git_url_template="{repo}/blob/{branch}/WindowsServerDocs/virtualization/hyper-v/get-started/Install-Hyper-V.md"
+																data-pr_repo=""
+																data-pr_branch="">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-edit-outline"></span>
+														</span>
+														<span>Изменить</span>
+													</a><div aria-hidden="true" class="margin-none" data-page-action-item="overflow-all"></div>
+														<hr class="display-none-tablet margin-bottom-xxs margin-top-xxs" />
+														<h4 class="font-size-sm padding-left-xxs">Поделиться через</h4>
+
+													<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-facebook-share font-size-md color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Facebook</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-xlogo-share font-size-xxs"></span>
+															</span>
+															<span class="margin-left-xxs">x.com</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-linked-in-logo font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start margin-bottom-xxs share-email" data-bi-name="email" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Адрес электронной почты</span>
+														</a><hr />
+													<button
+														class="button button-block button-clear button-sm justify-content-flex-start has-inner-focus margin-top-xxs"
+														title="Печать"
+														type="button"
+														aria-label="Печать"
+														data-bi-name="print"
+														data-page-action-item="overflow-all"
+														data-popover-close
+														data-print-page
+														data-check-hidden="true">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-print font-size-sm color-primary"></span>
+														</span>
+														<span class="margin-left-xxs">Печать</span>
+													</button>
+											</div>
+										</details>
+										
+									</div></div>
+							</div>
+							<!-- end article-header --><div>
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" data-bi-name="contents-expand" data-contents-button hidden>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span><span class="contents-expand-title">Оглавление</span></button>
+							</div><!-- end mobile-contents button  -->
+
+							<div class="content "><h1 id="install-hyper-v">Install Hyper-V</h1><div class="display-flex justify-content-space-between align-items-center flex-wrap-wrap page-metadata-container">
+										<div class="margin-right-xxs">
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="ru-ru" dir="ltr"><li>Статья</li><li class="visibility-hidden-visual-diff"><time class="is-invisible" data-article-date aria-label="Дата проверки статьи" datetime="2025-01-16T23:30:00Z" data-article-date-source="calculated">01/16/2025</time>
+															</li><li class="contributors-holder display-none-print">
+															<button type="button" class="contributors-button link-button" data-bi-name="contributors">1 участник</button>
+														</li><li class="attributeList-holder">
+														<dl class="attributeList">
+															<dt>Применяется к:</dt>
+															<dd>✅ <a href="https://learn.microsoft.com/windows-server/get-started/windows-server-release-info" target="_blank">Windows Server 2025</a>, ✅ <a href="https://learn.microsoft.com/windows-server/get-started/windows-server-release-info" target="_blank">Windows Server 2022</a>, ✅ <a href="https://learn.microsoft.com/windows-server/get-started/windows-server-release-info" target="_blank">Windows Server 2019</a>, ✅ <a href="https://learn.microsoft.com/windows-server/get-started/windows-server-release-info" target="_blank">Windows Server 2016</a>, ✅ <a href="https://learn.microsoft.com/windows/release-health/supported-versions-windows-client" target="_blank">Windows 11</a>, ✅ <a href="https://learn.microsoft.com/windows/release-health/supported-versions-windows-client" target="_blank">Windows 10</a>, ✅ <a href="https://learn.microsoft.com/azure/azure-local/release-information-23h2" target="_blank">Azure Local, versions 23H2 and 22H2</a></dd>
+														</dl>
+													</li></ul>
+										</div>
+<div id="user-feedback" class="margin-block-xxs display-none-print" data-hide-on-archived>
+	<button
+		id="user-feedback-button"
+		data-test-id="conceptual-feedback-button"
+		class="button button-sm button-clear button-primary"
+		type="button"
+		data-bi-name="user-feedback-button"
+		data-user-feedback-button
+	>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-like"></span>
+		</span>
+		<span>Обратная связь</span>
+	</button>
+</div></div><nav id="center-doc-outline" class="doc-outline is-hidden-desktop display-none-print margin-bottom-sm" data-bi-name="intopic toc" aria-label="В этой статье">
+											<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">В этой статье</h2>
+										</nav><!-- <content> --><div class="zone has-pivot" data-pivot="windows-server">
+<p>To create and run virtual machines, install the Hyper-V role on Windows Server by using Server Manager or the <strong>Install-WindowsFeature</strong> cmdlet in Windows PowerShell.</p>
+<p>To learn more about Hyper-V, see the <a href="../hyper-v-technology-overview" data-linktype="relative-path">Hyper-V Technology Overview</a>. To learn more about Hyper-V, see the <a href="../hyper-v-technology-overview" data-linktype="relative-path">Hyper-V Overview</a>. To try out Windows Server 2025, you can download and install an evaluation copy. See the <a href="https://www.microsoft.com/evalcenter/evaluate-windows-server-2025" data-linktype="external">Evaluation Center</a>.</p>
+<h2 id="check-requirements-for-windows-server">Check requirements for Windows Server</h2>
+<p>Before you install Windows Server or add the Hyper-V role, make sure that:</p>
+<ul>
+<li><p>Your computer hardware is compatible. For more information, see <a href="../../../get-started/hardware-requirements" data-linktype="relative-path">System Requirements for Windows Server</a> and <a href="../system-requirements-for-hyper-v-on-windows" data-linktype="relative-path">System requirements for Hyper-V on Windows Server</a>.</p>
+</li>
+<li><p>You don't plan to use third-party virtualization apps that rely on the same processor features that Hyper-V requires. Examples include VMWare Workstation and VirtualBox. You can install Hyper-V without uninstalling these other apps. But, if you try to use them to manage virtual machines when the Hyper-V hypervisor is running, the virtual machines might not start or might run unreliably. For details and instructions for turning off the Hyper-V hypervisor if you need to use one of these apps, see <a href="https://support.microsoft.com/help/3204980/virtualization-applications-do-not-work-together-with-hyper-v-device-g" data-linktype="external">Virtualization applications don't work together with Hyper-V, Device Guard, and Credential Guard</a>.</p>
+</li>
+</ul>
+<p>If you want to install only the management tools, such as Hyper-V Manager, see <a href="../manage/remotely-manage-hyper-v-hosts" data-linktype="relative-path">Remotely manage Hyper-V hosts with Hyper-V Manager</a>.</p>
+<h2 id="install-hyper-v-by-using-server-manager">Install Hyper-V by using Server Manager</h2>
+<ol>
+<li><p>In <strong>Server Manager</strong>, on the <strong>Manage</strong> menu, select <strong>Add Roles and Features</strong>.</p>
+</li>
+<li><p>On the <strong>Before you begin</strong> page, verify that your destination server and network environment are prepared for the role and feature you want to install. Select <strong>Next</strong>.</p>
+</li>
+<li><p>On the <strong>Select installation type</strong> page, select <strong>Role-based or feature-based installation</strong>, and then select <strong>Next</strong>.</p>
+</li>
+<li><p>On the <strong>Select destination server</strong> page, select a server from the server pool, and then select <strong>Next</strong>.</p>
+</li>
+<li><p>On the <strong>Select server roles</strong> page, select <strong>Hyper-V</strong>. From the <strong>Add Roles and Features Wizard</strong> page, select <strong>Add Features</strong>, and then select <strong>Next</strong>.</p>
+</li>
+<li><p>On the <strong>Select features</strong> page, select <strong>Next</strong>, and then select <strong>Next</strong> again.</p>
+</li>
+<li><p>On the <strong>Create Virtual Switches</strong> page, <strong>Virtual Machine Migration</strong> page, and <strong>Default Stores</strong> page, select the options that suit your specific environment.</p>
+</li>
+<li><p>On the <strong>Confirm installation selections</strong> page, select <strong>Restart the destination server automatically if required</strong>, and then select <strong>Install</strong>.</p>
+</li>
+<li><p>When installation is finished, verify that Hyper-V installed correctly. Open the <strong>All Servers</strong> page in Server Manager and select a server on which you installed Hyper-V. Check the <strong>Roles and Features</strong> tile on the page for the selected server.</p>
+</li>
+</ol>
+<h2 id="install-hyper-v-by-using-the-install-windowsfeature-cmdlet">Install Hyper-V by using the Install-WindowsFeature cmdlet</h2>
+<ol>
+<li><p>On the Windows desktop, select the Start button and type any part of the name <strong>Windows PowerShell</strong>.</p>
+</li>
+<li><p>Right-click Windows PowerShell and select <strong>Run as Administrator</strong>.</p>
+</li>
+<li><p>To install Hyper-V on a server you're connected to  remotely, run the following command and replace <code>&lt;computer_name&gt;</code> with the name of server.</p>
+<pre><code class="lang-powershell">Install-WindowsFeature -Name Hyper-V -ComputerName &lt;computer_name&gt; -IncludeManagementTools -Restart
+</code></pre>
+<p>If you're connected locally to the server, run the command without <code>-ComputerName &lt;computer_name&gt;</code>.</p>
+</li>
+<li><p>After the server restarts, you can see that the Hyper-V role is installed and see what other roles and features are installed by running the following command:</p>
+<pre><code class="lang-powershell">Get-WindowsFeature -ComputerName &lt;computer_name&gt;
+</code></pre>
+<p>If you're connected locally to the server, run the command without <code>-ComputerName &lt;computer_name&gt;</code>.</p>
+</li>
+</ol>
+<div class="NOTE">
+<p>Note</p>
+<p>If you install this role on a server that runs the Server Core installation option of Windows Server 2016 and use the parameter <code>-IncludeManagementTools</code>, only the Hyper-V Module for Windows PowerShell is installed. You can use the GUI management tool, Hyper-V Manager, on another computer to remotely manage a Hyper-V host that runs on a Server Core installation. For instructions on connecting remotely, see <a href="../manage/remotely-manage-hyper-v-hosts" data-linktype="relative-path">Remotely manage Hyper-V hosts with Hyper-V Manager</a>.</p>
+</div>
+<h2 id="additional-references">Additional references</h2>
+<ul>
+<li><a href="/en-us/powershell/module/servermanager/install-windowsfeature?view=windowsserver2022-ps&amp;preserve-view=true" data-linktype="absolute-path">Install-WindowsFeature</a></li>
+</ul>
+</div>
+<div class="zone has-pivot" data-pivot="windows">
+<p>Enable Hyper-V to create virtual machines on Windows. Hyper-V can be enabled in many ways including using the Windows control panel, PowerShell or using the Deployment Imaging Servicing and Management tool (DISM). This document walks through each option.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>Hyper-V is built into Windows as an optional feature -- there's no Hyper-V download.</p>
+</div>
+<h2 id="check-requirements-for-windows">Check requirements for Windows</h2>
+<ul>
+<li>Windows 10 (Pro or Enterprise), or Windows 11 (Pro or Enterprise)</li>
+<li>64-bit Processor with Second Level Address Translation (SLAT).</li>
+<li>CPU support for VM Monitor Mode Extension (VT-c on Intel CPUs).</li>
+<li>Minimum of 4 GB memory.</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>The Hyper-V role <strong>can't</strong> be installed on Windows 10 Home or Windows 11 Home.</p>
+</div>
+<p>For more information and troubleshooting, see <a href="/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements" data-linktype="absolute-path">Windows Hyper-V System Requirements</a>.</p>
+<h2 id="enable-hyper-v-using-powershell">Enable Hyper-V using PowerShell</h2>
+<ol>
+<li><p>Open a PowerShell console as Administrator.</p>
+</li>
+<li><p>Run the following command:</p>
+</li>
+</ol>
+<pre><code class="lang-powershell">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+</code></pre>
+<p>If the command isn't found, make sure you're running PowerShell as Administrator.</p>
+<ol>
+<li>When the installation completes, reboot.</li>
+</ol>
+<h2 id="enable-hyper-v-with-cmd-and-dism">Enable Hyper-V with CMD and DISM</h2>
+<p>The Deployment Image Servicing and Management tool (DISM) helps configure Windows and Windows images. Among its many applications, DISM can enable Windows features while the operating system is running.</p>
+<p>To enable the Hyper-V role using DISM:</p>
+<ol>
+<li><p>Open up a PowerShell or CMD session as Administrator.</p>
+</li>
+<li><p>Type the following command:</p>
+</li>
+</ol>
+<pre><code class="lang-powershell">DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+</code></pre>
+<p><img src="media/dism-upd.png" alt="Console window showing Hyper-V being enabled." data-linktype="relative-path"></p>
+<p>For more information about DISM, see the <a href="/en-us/windows-hardware/manufacture/desktop/dism-reference--deployment-image-servicing-and-management" data-linktype="absolute-path">DISM Technical Reference</a>.</p>
+<h2 id="enable-the-hyper-v-role-through-settings">Enable the Hyper-V role through Settings</h2>
+<ol>
+<li><p>Navigate to the Control Panel.</p>
+</li>
+<li><p>Select <strong>Programs</strong>, then <strong>Programs and Features</strong>.</p>
+</li>
+<li><p>Select <strong>Turn Windows Features on or off</strong>.</p>
+</li>
+<li><p>Select <strong>Hyper-V</strong> and then select <strong>OK</strong>.</p>
+</li>
+</ol>
+<p><img src="media/enable-hyper-v.png" alt="Windows programs and features dialogue box" data-linktype="relative-path"></p>
+<p>When the installation completes you're prompted to restart your computer.</p>
+</div>
+</div><div id="ms--inline-notifications" class="margin-block-xs" data-bi-name="inline-notification"></div><div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main><!-- recommendations section --><!-- end recommendations section -->
+
+						<!-- feedback section --><section id="site-user-feedback-footer" class="font-size-sm margin-top-md" data-test-id="site-user-feedback-footer" data-bi-name="site-feedback-section">
+	<hr class="hr" />
+	<h2 id="feedback" class="title is-3">Обратная связь</h2>
+	<div class="display-flex flex-wrap-wrap align-items-center">
+		<p class="font-weight-semibold margin-xxs margin-left-none">Были ли сведения на этой странице полезными?</p>
+		<div class="buttons">
+			<button
+				class="thumb-rating-button like button button-primary button-sm"
+				data-test-id="footer-rating-yes"
+				data-binary-rating-response="rating-yes"
+				type="button"
+				title="Эта статья полезна"
+				data-bi-name="button-rating-yes"
+				aria-pressed="false"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-like"></span>
+				</span>
+				<span>Да</span>
+			</button>
+			<button
+				class="thumb-rating-button dislike button button-primary button-sm"
+				data-test-id="footer-rating-no"
+				data-binary-rating-response="rating-no"
+				type="button"
+				title="Эта статья не полезна"
+				data-bi-name="button-rating-no"
+				aria-pressed="false"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-dislike"></span>
+				</span>
+				<span>Нет</span>
+			</button>
+		</div>
+	</div><div class="display-flex flex-wrap-wrap margin-top-xxs"></div>
+
+</section><!-- end feedback section -->
+
+						<!-- feedback report section --><!-- end feedback report section --><aside
+								id="ms--additional-resources-mobile"
+								aria-label="Дополнительные ресурсы"
+								class="display-none-desktop display-none-print"
+							>
+								<hr class="hr" hidden />
+								<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>Дополнительные ресурсы</h2>
+								<section id="right-rail-recommendations-mobile" data-bi-name="recommendations" hidden></section>
+								<section id="right-rail-training-mobile" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-events-mobile" data-bi-name="events-card" hidden></section>
+								<section id="right-rail-qna-mobile" data-bi-name="qna-link-card" hidden></section>
+							</aside><div class="border-top is-visible-interactive has-default-focus margin-top-sm "><footer id="footer-interactive" data-bi-name="footer" class="footer-layout"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Ваши варианты выбора параметров конфиденциальности</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu-interactive" aria-expanded="false" title="Тема" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Тема</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Светлая</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Темная</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Высокая контрастность</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/ru-ru/previous-versions/" data-bi-name="archivelink">Предыдущие версии</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Блог</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/ru-ru/contribute/" data-bi-name="contributorGuide">Участие в доработке</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Конфиденциальность</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/ru-ru/legal/termsofuse" data-bi-name="termsofuse">Условия использования</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Товарные знаки</a></li><li>&copy; Microsoft 2025</li>
+	</ul>
+</footer></div></div><div
+							id="ms--additional-resources"
+							class="right-container column is-4-desktop display-none display-block-desktop"
+							data-bi-name="pageactions"
+							role="complementary"
+							aria-label="Дополнительные ресурсы"
+						>
+							<div id="affixed-right-container" class="margin-top-sm-tablet" data-bi-name="right-column">
+								<h2 id="ms--additional-resources-heading" class="title is-6 margin-top-md" hidden>Дополнительные ресурсы</h2>
+								<section id="right-rail-events" data-bi-name="events-card" hidden></section>
+								<section id="right-rail-training" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-recommendations" data-bi-name="recommendations" hidden></section>
+								<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" aria-label="В этой статье">
+									<h3>В этой статье</h3>
+								</nav>
+								<section id="right-rail-qna" class="margin-top-xxs" data-bi-name="qna-link-card" hidden></section>
+							</div>
+						</div></div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm "><footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Ваши варианты выбора параметров конфиденциальности</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu" aria-expanded="false" title="Тема" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Тема</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Светлая</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Темная</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Высокая контрастность</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/ru-ru/previous-versions/" data-bi-name="archivelink">Предыдущие версии</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Блог</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/ru-ru/contribute/" data-bi-name="contributorGuide">Участие в доработке</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Конфиденциальность</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/ru-ru/legal/termsofuse" data-bi-name="termsofuse">Условия использования</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Товарные знаки</a></li><li>&copy; Microsoft 2025</li>
+	</ul>
+</footer>
+
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Панель действий" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>
